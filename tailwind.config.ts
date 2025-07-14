@@ -18,6 +18,9 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: ['Montserrat', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -61,6 +64,16 @@ export default {
 				warning: {
 					DEFAULT: 'hsl(var(--warning))',
 					foreground: 'hsl(var(--warning-foreground))'
+				},
+				kahoot: {
+					red: 'hsl(var(--kahoot-red))',
+					'red-foreground': 'hsl(var(--kahoot-red-foreground))',
+					blue: 'hsl(var(--kahoot-blue))',
+					'blue-foreground': 'hsl(var(--kahoot-blue-foreground))',
+					yellow: 'hsl(var(--kahoot-yellow))',
+					'yellow-foreground': 'hsl(var(--kahoot-yellow-foreground))',
+					green: 'hsl(var(--kahoot-green))',
+					'green-foreground': 'hsl(var(--kahoot-green-foreground))'
 				},
 				sidebar: {
 					DEFAULT: 'hsl(var(--sidebar-background))',

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Sparkles, Gift } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { ConfettiEffect } from './ConfettiEffect';
 
 interface FortuneWheelProps {
   onSpin: () => void;
@@ -136,33 +137,36 @@ export const FortuneWheel = ({ onSpin, hasSpun, reward }: FortuneWheelProps) => 
             onClick={handleSpin}
             disabled={isSpinning}
             size="lg"
-            className="reward-button text-xl px-8 py-6 group"
+            className="game-button text-2xl font-black px-12 py-8 group shadow-2xl"
           >
             {isSpinning ? (
               <>
-                <Sparkles className="w-6 h-6 mr-2 animate-spin" />
-                Spinning...
+                <Sparkles className="w-8 h-8 mr-3 animate-spin" />
+                SPINNING...
               </>
             ) : (
               <>
-                <Gift className="w-6 h-6 mr-2 group-hover:scale-110 transition-transform" />
-                Spin the Wheel!
+                <Gift className="w-8 h-8 mr-3 group-hover:scale-110 transition-transform" />
+                SPIN THE WHEEL!
               </>
             )}
           </Button>
         ) : (
-          <div className="game-card p-6 celebration border-accent">
-            <div className="text-center space-y-4">
-              <div className="text-6xl mb-4">🎉</div>
-              <h3 className="text-2xl font-bold text-accent">You Won!</h3>
-              <p className="text-xl">{reward}</p>
-              <div className="flex items-center justify-center gap-2 text-muted-foreground">
-                <Sparkles className="w-4 h-4" />
-                <span>Prize will be delivered soon!</span>
-                <Sparkles className="w-4 h-4" />
+          <>
+            <ConfettiEffect trigger={hasSpun} />
+            <div className="bg-gradient-to-r from-accent to-primary p-8 rounded-3xl celebration text-white border-4 border-white/20">
+              <div className="text-center space-y-4">
+                <div className="text-8xl mb-4">🎊</div>
+                <h3 className="text-4xl font-black">WINNER!</h3>
+                <p className="text-2xl font-bold">{reward}</p>
+                <div className="flex items-center justify-center gap-3 text-xl font-bold">
+                  <span>🎁</span>
+                  <span>Prize incoming!</span>
+                  <span>🎁</span>
+                </div>
               </div>
             </div>
-          </div>
+          </>
         )}
 
         {/* Decorative Elements */}

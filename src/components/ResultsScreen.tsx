@@ -1,5 +1,6 @@
 import { Trophy, RotateCcw, Share2, Star, Gift } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { ConfettiEffect } from './ConfettiEffect';
 
 interface ResultsScreenProps {
   score: number;
@@ -40,14 +41,16 @@ export const ResultsScreen = ({ score, totalQuestions, reward, onRestart, onSave
 
   return (
     <div className="min-h-screen flex items-center justify-center p-4 tablet-content">
-      <div className="text-center space-y-8 max-w-2xl w-full fade-in-scale">
+      <div className="text-center space-y-8 max-w-3xl w-full fade-in-scale">
+        <ConfettiEffect trigger={percentage >= 67} />
+        
         {/* Header */}
         <div className="space-y-4">
-          <h2 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Quiz Complete!
+          <h2 className="text-5xl md:text-7xl font-black kahoot-title bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+            RESULTS!
           </h2>
-          <p className="text-xl text-muted-foreground">
-            Here are your results
+          <p className="text-2xl font-bold text-foreground">
+            Let's see how you did! 📊
           </p>
         </div>
 
@@ -119,13 +122,15 @@ export const ResultsScreen = ({ score, totalQuestions, reward, onRestart, onSave
 
         {/* Reward Display */}
         {reward && (
-          <div className="game-card p-6 border-accent celebration">
+          <div className="bg-gradient-to-r from-accent to-primary p-8 rounded-3xl celebration text-white border-4 border-white/20">
             <div className="text-center space-y-4">
-              <Gift className="w-12 h-12 mx-auto text-accent" />
-              <h3 className="text-2xl font-bold text-accent">Prize Won!</h3>
-              <p className="text-xl">{reward}</p>
-              <div className="flex items-center justify-center gap-2 text-muted-foreground">
-                <span>🎉 Congratulations! 🎉</span>
+              <Gift className="w-16 h-16 mx-auto" />
+              <h3 className="text-3xl font-black">BONUS PRIZE!</h3>
+              <p className="text-2xl font-bold">{reward}</p>
+              <div className="flex items-center justify-center gap-3 text-xl font-bold">
+                <span>🎊</span>
+                <span>AMAZING!</span>
+                <span>🎊</span>
               </div>
             </div>
           </div>
@@ -137,20 +142,19 @@ export const ResultsScreen = ({ score, totalQuestions, reward, onRestart, onSave
             <Button 
               onClick={onRestart}
               size="lg"
-              className="game-button px-8 py-6 group"
+              className="game-button text-2xl font-black px-12 py-8 group shadow-2xl"
             >
-              <RotateCcw className="w-6 h-6 mr-2 group-hover:rotate-180 transition-transform duration-300" />
-              Play Again
+              <RotateCcw className="w-8 h-8 mr-3 group-hover:rotate-180 transition-transform duration-300" />
+              PLAY AGAIN!
             </Button>
             
             <Button 
               onClick={handleSaveAndShare}
               size="lg"
-              variant="outline"
-              className="border-accent text-accent hover:bg-accent hover:text-accent-foreground px-8 py-6 group"
+              className="bg-gradient-to-r from-kahoot-green to-kahoot-blue text-white font-black text-xl px-12 py-8 rounded-full border-4 border-white/20 hover:scale-105 transition-all duration-300 group shadow-2xl"
             >
-              <Share2 className="w-6 h-6 mr-2 group-hover:scale-110 transition-transform" />
-              Save & Share
+              <Share2 className="w-8 h-8 mr-3 group-hover:scale-110 transition-transform" />
+              SHARE SCORE!
             </Button>
           </div>
 

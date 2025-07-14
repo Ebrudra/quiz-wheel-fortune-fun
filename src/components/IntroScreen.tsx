@@ -9,71 +9,79 @@ interface IntroScreenProps {
 export const IntroScreen = ({ onStart, highScore }: IntroScreenProps) => {
   return (
     <div className="min-h-screen flex items-center justify-center p-4 tablet-content">
-      <div className="game-card text-center max-w-2xl w-full space-y-8 fade-in-scale">
+      <div className="game-card text-center max-w-3xl w-full space-y-8 fade-in-scale">
         {/* Game Logo */}
         <div className="relative">
-          <h1 className="text-6xl md:text-8xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent pulse-glow">
-            Quiz
-            <span className="inline-block ml-2">
-              <Sparkles className="w-16 h-16 md:w-20 md:h-20 text-accent inline animate-spin" style={{ animationDuration: '3s' }} />
-            </span>
-            Master
+          <h1 className="text-7xl md:text-9xl font-black kahoot-title bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent">
+            KAHOOT!
           </h1>
-          <div className="absolute -top-4 -right-4 w-8 h-8 bg-accent rounded-full animate-pulse" />
-          <div className="absolute -bottom-2 -left-2 w-6 h-6 bg-primary rounded-full animate-pulse" style={{ animationDelay: '0.5s' }} />
+          <div className="text-2xl md:text-3xl font-bold text-foreground mt-2">
+            Quiz Challenge
+          </div>
+          <div className="absolute -top-4 -right-4 text-4xl animate-bounce">🎉</div>
+          <div className="absolute -bottom-2 -left-2 text-3xl animate-bounce" style={{ animationDelay: '0.5s' }}>⚡</div>
         </div>
 
         {/* Game Description */}
-        <div className="space-y-4">
-          <p className="text-xl md:text-2xl text-muted-foreground">
-            Test your knowledge and spin the wheel of fortune!
+        <div className="space-y-6">
+          <p className="text-2xl md:text-3xl font-bold text-foreground">
+            Join the ultimate quiz experience! 🚀
           </p>
-          <div className="flex items-center justify-center gap-6 text-sm text-muted-foreground">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-primary rounded-full" />
-              <span>3 Questions</span>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-kahoot-red text-kahoot-red-foreground">
+              <div className="text-2xl">❓</div>
+              <span className="font-bold text-sm">3 Questions</span>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-accent rounded-full" />
-              <span>Fortune Wheel</span>
+            <div className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-kahoot-blue text-kahoot-blue-foreground">
+              <div className="text-2xl">🎯</div>
+              <span className="font-bold text-sm">Fast Paced</span>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 bg-success rounded-full" />
-              <span>Amazing Prizes</span>
+            <div className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-kahoot-yellow text-kahoot-yellow-foreground">
+              <div className="text-2xl">🎡</div>
+              <span className="font-bold text-sm">Spin Wheel</span>
+            </div>
+            <div className="flex flex-col items-center gap-2 p-4 rounded-2xl bg-kahoot-green text-kahoot-green-foreground">
+              <div className="text-2xl">🏆</div>
+              <span className="font-bold text-sm">Win Prizes</span>
             </div>
           </div>
         </div>
 
         {/* High Score Display */}
         {highScore > 0 && (
-          <div className="game-card bg-accent/10 border-accent/20 p-4">
-            <div className="flex items-center justify-center gap-2 text-accent">
-              <Trophy className="w-5 h-5" />
-              <span className="font-semibold">Best Score: {highScore}/3</span>
+          <div className="bg-gradient-to-r from-accent to-primary p-4 rounded-3xl text-white bounce-in">
+            <div className="flex items-center justify-center gap-3">
+              <Trophy className="w-6 h-6" />
+              <span className="font-black text-xl">BEST SCORE: {highScore}/3</span>
+              <div className="text-2xl">🎖️</div>
             </div>
           </div>
         )}
 
         {/* Start Button */}
-        <div className="space-y-4">
+        <div className="space-y-6">
           <Button 
             onClick={onStart}
             size="lg"
-            className="game-button text-lg px-8 py-6 w-full md:w-auto group"
+            className="game-button text-2xl font-black px-12 py-8 w-full md:w-auto group shadow-2xl"
           >
-            <Play className="w-6 h-6 mr-2 group-hover:scale-110 transition-transform" />
-            Start Quiz
+            <Play className="w-8 h-8 mr-3 group-hover:scale-110 transition-transform" />
+            START!
           </Button>
-          <p className="text-xs text-muted-foreground">
-            Optimized for tablet landscape mode
-          </p>
+          <div className="flex items-center justify-center gap-2 text-sm font-bold text-muted-foreground">
+            <span>🎮</span>
+            <span>Best on tablet landscape</span>
+            <span>🎮</span>
+          </div>
         </div>
 
         {/* Decorative Elements */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-primary rounded-full animate-ping" style={{ animationDelay: '1s' }} />
-          <div className="absolute top-3/4 right-1/4 w-3 h-3 bg-accent rounded-full animate-ping" style={{ animationDelay: '2s' }} />
-          <div className="absolute bottom-1/4 left-1/3 w-1 h-1 bg-success rounded-full animate-ping" style={{ animationDelay: '3s' }} />
+        <div className="flex justify-center gap-4 text-4xl">
+          <span className="animate-bounce" style={{ animationDelay: '0s' }}>🎊</span>
+          <span className="animate-bounce" style={{ animationDelay: '0.2s' }}>🎯</span>
+          <span className="animate-bounce" style={{ animationDelay: '0.4s' }}>🚀</span>
+          <span className="animate-bounce" style={{ animationDelay: '0.6s' }}>⭐</span>
+          <span className="animate-bounce" style={{ animationDelay: '0.8s' }}>🎊</span>
         </div>
       </div>
     </div>

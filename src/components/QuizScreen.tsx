@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Check, X, Clock, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Question } from '@/hooks/useGameState';
+import { ConfettiEffect } from './ConfettiEffect';
 import question1 from '@/assets/question1.jpg';
 import question2 from '@/assets/question2.jpg';
 import question3 from '@/assets/question3.jpg';
@@ -109,50 +110,68 @@ export const QuizScreen = ({ question, questionNumber, totalQuestions, onAnswer 
               </h2>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {question.options.map((option, index) => (
-                <Button
-                  key={index}
-                  onClick={() => handleAnswer(index)}
-                  disabled={selectedAnswer !== null}
-                  className={`${getOptionStyle(index)} p-6 h-auto text-left justify-start text-wrap`}
-                  variant="ghost"
-                >
-                  <div className="flex items-center gap-3 w-full">
-                    <div className="flex-shrink-0 w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary">
-                      {String.fromCharCode(65 + index)}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {question.options.map((option, index) => {
+                const buttonClasses = [
+                  'answer-button-a',
+                  'answer-button-b', 
+                  'answer-button-c',
+                  'answer-button-d'
+                ];
+                const shapes = ['⬥', '◆', '●', '▲'];
+                
+                return (
+                  <Button
+                    key={index}
+                    onClick={() => handleAnswer(index)}
+                    disabled={selectedAnswer !== null}
+                    className={`${getOptionStyle(index)} ${buttonClasses[index]} p-6 h-auto text-left justify-start text-wrap min-h-[80px] rounded-3xl font-bold text-lg border-4 border-white/20`}
+                    variant="ghost"
+                  >
+                    <div className="flex items-center gap-4 w-full">
+                      <div className="flex-shrink-0 w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center font-black text-2xl">
+                        {shapes[index]}
+                      </div>
+                      <span className="flex-1 leading-tight">{option}</span>
+                      {showResult && index === question.correctAnswer && (
+                        <Check className="w-8 h-8 flex-shrink-0 animate-bounce" />
+                      )}
+                      {showResult && selectedAnswer === index && index !== question.correctAnswer && (
+                        <X className="w-8 h-8 flex-shrink-0 animate-pulse" />
+                      )}
                     </div>
-                    <span className="text-lg font-medium flex-1">{option}</span>
-                    {showResult && index === question.correctAnswer && (
-                      <Check className="w-6 h-6 text-success flex-shrink-0" />
-                    )}
-                    {showResult && selectedAnswer === index && index !== question.correctAnswer && (
-                      <X className="w-6 h-6 text-destructive flex-shrink-0" />
-                    )}
-                  </div>
-                </Button>
-              ))}
+                  </Button>
+                );
+              })}
             </div>
 
             {showResult && (
-              <div className="game-card p-4 celebration">
-                {selectedAnswer === question.correctAnswer ? (
-                  <div className="text-center text-success">
-                    <Check className="w-8 h-8 mx-auto mb-2" />
-                    <p className="font-semibold">Correct! Well done!</p>
-                  </div>
-                ) : selectedAnswer === -1 ? (
-                  <div className="text-center text-warning">
-                    <Clock className="w-8 h-8 mx-auto mb-2" />
-                    <p className="font-semibold">Time's up!</p>
-                  </div>
-                ) : (
-                  <div className="text-center text-destructive">
-                    <X className="w-8 h-8 mx-auto mb-2" />
-                    <p className="font-semibold">Not quite right!</p>
-                  </div>
-                )}
-              </div>
+              <>
+                <ConfettiEffect 
+                  trigger={selectedAnswer === question.correctAnswer} 
+                />
+                <div className="bg-gradient-to-r from-primary to-accent p-6 rounded-3xl celebration text-white">
+                  {selectedAnswer === question.correctAnswer ? (
+                    <div className="text-center">
+                      <div className="text-6xl mb-2">🎉</div>
+                      <p className="font-black text-2xl">CORRECT!</p>
+                      <p className="font-bold text-lg opacity-90">Amazing work!</p>
+                    </div>
+                  ) : selectedAnswer === -1 ? (
+                    <div className="text-center">
+                      <div className="text-6xl mb-2">⏰</div>
+                      <p className="font-black text-2xl">TIME'S UP!</p>
+                      <p className="font-bold text-lg opacity-90">Be faster next time!</p>
+                    </div>
+                  ) : (
+                    <div className="text-center">
+                      <div className="text-6xl mb-2">😅</div>
+                      <p className="font-black text-2xl">OOPS!</p>
+                      <p className="font-bold text-lg opacity-90">Better luck next time!</p>
+                    </div>
+                  )}
+                </div>
+              </>
             )}
           </div>
         </div>

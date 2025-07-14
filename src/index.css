@@ -2,64 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Game Quiz Design System - All colors MUST be HSL */
+/* Kahoot-Style Quiz Design System - Vibrant & Fun */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap');
 
 @layer base {
   :root {
-    /* Game Background - Deep space gradient */
-    --background: 252 100% 3%;
-    --foreground: 50 100% 95%;
+    /* Kahoot Purple Theme */
+    --background: 252 100% 6%;
+    --foreground: 0 0% 98%;
 
-    /* Card system - Glass morphism effect */
-    --card: 252 25% 8%;
-    --card-foreground: 50 100% 95%;
+    /* Card system - Vibrant cards with shadows */
+    --card: 0 0% 100%;
+    --card-foreground: 221 39% 11%;
 
-    --popover: 252 25% 8%;
-    --popover-foreground: 50 100% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 221 39% 11%;
 
-    /* Primary - Deep purple/blue for game elements */
-    --primary: 255 85% 60%;
-    --primary-foreground: 255 100% 15%;
-    --primary-glow: 255 100% 70%;
+    /* Primary - Kahoot Purple */
+    --primary: 267 100% 69%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 267 100% 80%;
 
-    /* Secondary - Rich purple accent */
-    --secondary: 280 60% 25%;
-    --secondary-foreground: 50 100% 95%;
+    /* Secondary - Deep Purple */
+    --secondary: 252 77% 20%;
+    --secondary-foreground: 0 0% 100%;
 
-    /* Muted - Subtle game UI elements */
-    --muted: 252 15% 15%;
-    --muted-foreground: 240 15% 65%;
+    /* Muted - Light grays */
+    --muted: 220 13% 91%;
+    --muted-foreground: 220 9% 46%;
 
-    /* Accent - Gold for rewards and success */
-    --accent: 45 100% 60%;
-    --accent-foreground: 45 100% 15%;
-    --accent-glow: 45 100% 70%;
+    /* Accent - Bright Pink */
+    --accent: 330 100% 71%;
+    --accent-foreground: 0 0% 100%;
+    --accent-glow: 330 100% 80%;
+
+    /* Kahoot Answer Colors */
+    --kahoot-red: 348 83% 47%;
+    --kahoot-red-foreground: 0 0% 100%;
+    --kahoot-blue: 207 90% 54%;
+    --kahoot-blue-foreground: 0 0% 100%;
+    --kahoot-yellow: 54 100% 62%;
+    --kahoot-yellow-foreground: 221 39% 11%;
+    --kahoot-green: 134 61% 41%;
+    --kahoot-green-foreground: 0 0% 100%;
 
     /* Game specific colors */
-    --success: 120 100% 50%;
-    --success-foreground: 120 100% 10%;
-    --warning: 35 100% 55%;
-    --warning-foreground: 35 100% 10%;
+    --success: 134 61% 41%;
+    --success-foreground: 0 0% 100%;
+    --warning: 54 100% 62%;
+    --warning-foreground: 221 39% 11%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 348 83% 47%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 252 25% 20%;
-    --input: 252 25% 12%;
-    --ring: 255 85% 60%;
+    --border: 220 13% 91%;
+    --input: 0 0% 100%;
+    --ring: 267 100% 69%;
 
-    /* Game gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(255 85% 60%), hsl(280 80% 55%));
-    --gradient-accent: linear-gradient(135deg, hsl(45 100% 60%), hsl(35 100% 55%));
-    --gradient-background: linear-gradient(135deg, hsl(252 100% 3%), hsl(252 50% 8%));
-    --gradient-card: linear-gradient(135deg, hsl(252 25% 8% / 0.9), hsl(252 25% 12% / 0.9));
+    /* Kahoot gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(267 100% 69%), hsl(330 100% 71%));
+    --gradient-background: linear-gradient(135deg, hsl(252 100% 6%), hsl(252 77% 20%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(220 13% 95%));
+    --gradient-answer-a: linear-gradient(135deg, hsl(348 83% 47%), hsl(348 83% 57%));
+    --gradient-answer-b: linear-gradient(135deg, hsl(207 90% 54%), hsl(207 90% 64%));
+    --gradient-answer-c: linear-gradient(135deg, hsl(54 100% 62%), hsl(54 100% 72%));
+    --gradient-answer-d: linear-gradient(135deg, hsl(134 61% 41%), hsl(134 61% 51%));
 
-    /* Game shadows and glows */
-    --shadow-primary: 0 10px 30px hsl(255 85% 60% / 0.3);
-    --shadow-accent: 0 10px 30px hsl(45 100% 60% / 0.3);
-    --shadow-game: 0 20px 60px hsl(252 100% 3% / 0.8);
-    --glow-primary: 0 0 40px hsl(255 100% 70% / 0.6);
-    --glow-accent: 0 0 40px hsl(45 100% 70% / 0.6);
+    /* Kahoot shadows */
+    --shadow-primary: 0 8px 32px hsl(267 100% 69% / 0.25);
+    --shadow-accent: 0 8px 32px hsl(330 100% 71% / 0.25);
+    --shadow-card: 0 8px 24px hsl(220 9% 46% / 0.15);
+    --shadow-answer: 0 4px 16px hsl(220 9% 46% / 0.2);
+    --glow-primary: 0 0 48px hsl(267 100% 80% / 0.6);
+    --glow-accent: 0 0 48px hsl(330 100% 80% / 0.6);
 
     --radius: 0.5rem;
 
@@ -128,70 +144,92 @@
     @apply bg-background text-foreground;
     background: var(--gradient-background);
     min-height: 100vh;
+    font-family: 'Montserrat', sans-serif;
   }
 }
 
 @layer components {
-  /* Game UI Components */
+  /* Kahoot-Style UI Components */
   .game-card {
-    @apply relative backdrop-blur-lg rounded-2xl p-6;
+    @apply relative rounded-3xl p-6 border-0;
     background: var(--gradient-card);
-    border: 1px solid hsl(var(--border));
-    box-shadow: var(--shadow-game);
+    box-shadow: var(--shadow-card);
+    border: 3px solid hsl(var(--border));
   }
 
   .game-button {
-    @apply relative overflow-hidden rounded-xl px-6 py-3 font-semibold transition-all duration-300;
+    @apply relative overflow-hidden rounded-full px-8 py-4 font-bold text-lg transition-all duration-300 transform;
     background: var(--gradient-primary);
     box-shadow: var(--shadow-primary);
-    transform: translateY(0);
+    border: 3px solid transparent;
   }
 
   .game-button:hover {
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.02);
     box-shadow: var(--shadow-primary), var(--glow-primary);
   }
 
   .game-button:active {
+    transform: translateY(-1px) scale(0.98);
+  }
+
+  /* Kahoot Answer Buttons */
+  .answer-button-a {
+    background: var(--gradient-answer-a);
+    color: hsl(var(--kahoot-red-foreground));
+    box-shadow: var(--shadow-answer);
+  }
+
+  .answer-button-b {
+    background: var(--gradient-answer-b);
+    color: hsl(var(--kahoot-blue-foreground));
+    box-shadow: var(--shadow-answer);
+  }
+
+  .answer-button-c {
+    background: var(--gradient-answer-c);
+    color: hsl(var(--kahoot-yellow-foreground));
+    box-shadow: var(--shadow-answer);
+  }
+
+  .answer-button-d {
+    background: var(--gradient-answer-d);
+    color: hsl(var(--kahoot-green-foreground));
+    box-shadow: var(--shadow-answer);
+  }
+
+  .answer-button-a:hover,
+  .answer-button-b:hover,
+  .answer-button-c:hover,
+  .answer-button-d:hover {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: var(--shadow-answer), 0 12px 32px hsl(220 9% 46% / 0.3);
+  }
+
+  /* Kahoot Question Cards */
+  .question-card {
+    @apply relative rounded-3xl p-6 transition-all duration-300 cursor-pointer font-bold text-lg border-0;
+    box-shadow: var(--shadow-card);
     transform: translateY(0);
   }
 
-  .reward-button {
-    @apply relative overflow-hidden rounded-xl px-6 py-3 font-semibold transition-all duration-300;
-    background: var(--gradient-accent);
-    color: hsl(var(--accent-foreground));
-    box-shadow: var(--shadow-accent);
-  }
-
-  .reward-button:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-accent), var(--glow-accent);
-  }
-
-  /* Quiz Question Cards */
-  .question-card {
-    @apply game-card border-2 transition-all duration-300 cursor-pointer;
-    border-color: hsl(var(--border));
-  }
-
-  .question-card:hover {
-    border-color: hsl(var(--primary));
-    box-shadow: var(--shadow-game), var(--glow-primary);
-  }
-
-  .question-card.selected {
-    border-color: hsl(var(--accent));
-    box-shadow: var(--shadow-game), var(--glow-accent);
-  }
-
   .question-card.correct {
-    border-color: hsl(var(--success));
-    background: linear-gradient(135deg, hsl(120 100% 50% / 0.1), hsl(120 100% 40% / 0.1));
+    background: var(--gradient-answer-d);
+    color: hsl(var(--kahoot-green-foreground));
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: var(--shadow-answer), 0 12px 32px hsl(134 61% 41% / 0.4);
   }
 
   .question-card.incorrect {
-    border-color: hsl(var(--destructive));
-    background: linear-gradient(135deg, hsl(0 84% 60% / 0.1), hsl(0 84% 50% / 0.1));
+    background: var(--gradient-answer-a);
+    color: hsl(var(--kahoot-red-foreground));
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-answer), 0 8px 24px hsl(348 83% 47% / 0.4);
+  }
+
+  .question-card.selected {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: var(--shadow-card), var(--glow-primary);
   }
 
   /* Fortune Wheel */
@@ -204,21 +242,29 @@
     animation: wheelSpin 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   }
 
-  /* Game Animations */
+  /* Kahoot Animations */
   .pulse-glow {
     animation: pulseGlow 2s ease-in-out infinite;
   }
 
   .celebration {
-    animation: celebration 0.6s ease-out;
+    animation: celebration 0.6s ease-out, bounceIn 0.8s ease-out;
   }
 
   .slide-up {
-    animation: slideUp 0.5s ease-out;
+    animation: slideUp 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 
   .fade-in-scale {
-    animation: fadeInScale 0.4s ease-out;
+    animation: fadeInScale 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .bounce-in {
+    animation: bounceIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .kahoot-title {
+    animation: kahootTitle 1s ease-out;
   }
 }
 
@@ -242,30 +288,69 @@
 
   @keyframes celebration {
     0% { transform: scale(1) rotate(0deg); }
-    25% { transform: scale(1.1) rotate(5deg); }
-    75% { transform: scale(1.1) rotate(-5deg); }
+    25% { transform: scale(1.15) rotate(8deg); }
+    50% { transform: scale(1.1) rotate(-5deg); }
+    75% { transform: scale(1.15) rotate(5deg); }
     100% { transform: scale(1) rotate(0deg); }
   }
 
   @keyframes slideUp {
     from { 
       opacity: 0;
-      transform: translateY(30px);
+      transform: translateY(50px) scale(0.9);
     }
     to { 
       opacity: 1;
-      transform: translateY(0);
+      transform: translateY(0) scale(1);
     }
   }
 
   @keyframes fadeInScale {
     from { 
       opacity: 0;
-      transform: scale(0.9);
+      transform: scale(0.8);
     }
     to { 
       opacity: 1;
       transform: scale(1);
+    }
+  }
+
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale3d(0.3, 0.3, 0.3);
+    }
+    20% {
+      transform: scale3d(1.1, 1.1, 1.1);
+    }
+    40% {
+      transform: scale3d(0.9, 0.9, 0.9);
+    }
+    60% {
+      opacity: 1;
+      transform: scale3d(1.03, 1.03, 1.03);
+    }
+    80% {
+      transform: scale3d(0.97, 0.97, 0.97);
+    }
+    100% {
+      opacity: 1;
+      transform: scale3d(1, 1, 1);
+    }
+  }
+
+  @keyframes kahootTitle {
+    0% {
+      opacity: 0;
+      transform: translateY(-30px) scale(0.9);
+    }
+    50% {
+      transform: translateY(5px) scale(1.05);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0) scale(1);
     }
   }
 
