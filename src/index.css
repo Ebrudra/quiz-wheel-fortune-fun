@@ -2,39 +2,64 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Game Quiz Design System - All colors MUST be HSL */
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Game Background - Deep space gradient */
+    --background: 252 100% 3%;
+    --foreground: 50 100% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    /* Card system - Glass morphism effect */
+    --card: 252 25% 8%;
+    --card-foreground: 50 100% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 252 25% 8%;
+    --popover-foreground: 50 100% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Primary - Deep purple/blue for game elements */
+    --primary: 255 85% 60%;
+    --primary-foreground: 255 100% 15%;
+    --primary-glow: 255 100% 70%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    /* Secondary - Rich purple accent */
+    --secondary: 280 60% 25%;
+    --secondary-foreground: 50 100% 95%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    /* Muted - Subtle game UI elements */
+    --muted: 252 15% 15%;
+    --muted-foreground: 240 15% 65%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    /* Accent - Gold for rewards and success */
+    --accent: 45 100% 60%;
+    --accent-foreground: 45 100% 15%;
+    --accent-glow: 45 100% 70%;
+
+    /* Game specific colors */
+    --success: 120 100% 50%;
+    --success-foreground: 120 100% 10%;
+    --warning: 35 100% 55%;
+    --warning-foreground: 35 100% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 252 25% 20%;
+    --input: 252 25% 12%;
+    --ring: 255 85% 60%;
+
+    /* Game gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(255 85% 60%), hsl(280 80% 55%));
+    --gradient-accent: linear-gradient(135deg, hsl(45 100% 60%), hsl(35 100% 55%));
+    --gradient-background: linear-gradient(135deg, hsl(252 100% 3%), hsl(252 50% 8%));
+    --gradient-card: linear-gradient(135deg, hsl(252 25% 8% / 0.9), hsl(252 25% 12% / 0.9));
+
+    /* Game shadows and glows */
+    --shadow-primary: 0 10px 30px hsl(255 85% 60% / 0.3);
+    --shadow-accent: 0 10px 30px hsl(45 100% 60% / 0.3);
+    --shadow-game: 0 20px 60px hsl(252 100% 3% / 0.8);
+    --glow-primary: 0 0 40px hsl(255 100% 70% / 0.6);
+    --glow-accent: 0 0 40px hsl(45 100% 70% / 0.6);
 
     --radius: 0.5rem;
 
@@ -101,5 +126,157 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+    background: var(--gradient-background);
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Game UI Components */
+  .game-card {
+    @apply relative backdrop-blur-lg rounded-2xl p-6;
+    background: var(--gradient-card);
+    border: 1px solid hsl(var(--border));
+    box-shadow: var(--shadow-game);
+  }
+
+  .game-button {
+    @apply relative overflow-hidden rounded-xl px-6 py-3 font-semibold transition-all duration-300;
+    background: var(--gradient-primary);
+    box-shadow: var(--shadow-primary);
+    transform: translateY(0);
+  }
+
+  .game-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-primary), var(--glow-primary);
+  }
+
+  .game-button:active {
+    transform: translateY(0);
+  }
+
+  .reward-button {
+    @apply relative overflow-hidden rounded-xl px-6 py-3 font-semibold transition-all duration-300;
+    background: var(--gradient-accent);
+    color: hsl(var(--accent-foreground));
+    box-shadow: var(--shadow-accent);
+  }
+
+  .reward-button:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-accent), var(--glow-accent);
+  }
+
+  /* Quiz Question Cards */
+  .question-card {
+    @apply game-card border-2 transition-all duration-300 cursor-pointer;
+    border-color: hsl(var(--border));
+  }
+
+  .question-card:hover {
+    border-color: hsl(var(--primary));
+    box-shadow: var(--shadow-game), var(--glow-primary);
+  }
+
+  .question-card.selected {
+    border-color: hsl(var(--accent));
+    box-shadow: var(--shadow-game), var(--glow-accent);
+  }
+
+  .question-card.correct {
+    border-color: hsl(var(--success));
+    background: linear-gradient(135deg, hsl(120 100% 50% / 0.1), hsl(120 100% 40% / 0.1));
+  }
+
+  .question-card.incorrect {
+    border-color: hsl(var(--destructive));
+    background: linear-gradient(135deg, hsl(0 84% 60% / 0.1), hsl(0 84% 50% / 0.1));
+  }
+
+  /* Fortune Wheel */
+  .wheel-container {
+    @apply relative flex items-center justify-center;
+    filter: drop-shadow(var(--shadow-primary));
+  }
+
+  .wheel-spin {
+    animation: wheelSpin 3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  /* Game Animations */
+  .pulse-glow {
+    animation: pulseGlow 2s ease-in-out infinite;
+  }
+
+  .celebration {
+    animation: celebration 0.6s ease-out;
+  }
+
+  .slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+
+  .fade-in-scale {
+    animation: fadeInScale 0.4s ease-out;
+  }
+}
+
+@layer utilities {
+  /* Game Animation Keyframes */
+  @keyframes wheelSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(var(--wheel-rotation, 1080deg)); }
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% { 
+      box-shadow: var(--shadow-primary);
+      transform: scale(1);
+    }
+    50% { 
+      box-shadow: var(--shadow-primary), var(--glow-primary);
+      transform: scale(1.02);
+    }
+  }
+
+  @keyframes celebration {
+    0% { transform: scale(1) rotate(0deg); }
+    25% { transform: scale(1.1) rotate(5deg); }
+    75% { transform: scale(1.1) rotate(-5deg); }
+    100% { transform: scale(1) rotate(0deg); }
+  }
+
+  @keyframes slideUp {
+    from { 
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to { 
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInScale {
+    from { 
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    to { 
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Responsive tablet optimization */
+  @media (min-width: 768px) and (orientation: landscape) {
+    .tablet-landscape {
+      @apply grid-cols-2 gap-8;
+    }
+    
+    .tablet-content {
+      @apply max-w-6xl mx-auto px-8;
+    }
   }
 }
