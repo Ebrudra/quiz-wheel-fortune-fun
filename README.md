@@ -1,73 +1,59 @@
-# Welcome to your Lovable project
+# Quiz Master: Kahoot-Style
 
-## Project info
+This project is a complete Quiz Master game with a vibrant, Kahoot-style experience. It features an engaging and interactive interface with smooth animations, colorful designs, and rewarding interactions.
 
-**URL**: https://lovable.dev/projects/04b52339-21e0-418d-8137-883f018d3a9d
+## 🎮 Complete Game Features:
 
-## How can I edit this code?
+*   **Intro Screen:** Animated branding with pulsing effects and a high score display.
+*   **3-Question Quiz:** Brain-teasing geography and sports questions with accompanying images and a 30-second timer for each question.
+*   **Fortune Wheel:** An animated spinning wheel with 8 prize segments ensures every spin is a win!
+*   **Results Screen:** A summary of your performance, including a circular progress bar, a star rating, and a score celebration.
+*   **Local Storage:** Your scores are automatically tracked, and the high score is always displayed.
+*   **Tablet Optimization:** The game is fully responsive with a landscape layout optimized for tablet use.
 
-There are several ways of editing your application.
+## 🎨 Visual Polish:
 
-**Use Lovable**
+*   **Deep Space Theme:** A stunning deep space gradient background with elegant purple and gold accents.
+*   **Smooth Transitions:** Seamless card transitions and hover effects for a polished user experience.
+*   **Interactive Buttons:** Glowing button states and celebratory animations enhance interactivity.
+*   **Modern Design:** Sleek glass morphism design elements are used throughout the interface.
+*   **Custom Animations:** A custom wheel spinning animation with realistic physics.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/04b52339-21e0-418d-8137-883f018d3a9d) and start prompting.
+## ✨ Kahoot-Style Transformation:
 
-Changes made via Lovable will be committed automatically to this repo.
+*   **Kahoot Design System:** The user interface now incorporates the bright and energetic colors of the Kahoot! design system (purple, pink, red, blue, yellow, green), the Montserrat font, and rounded buttons and cards for that signature Kahoot! feel.
+*   **Confetti Animations:** The `canvas-confetti` library is used to create fun and celebratory confetti effects for correct answers and wins.
+*   **Interactive Elements:** Answer buttons are styled in the iconic Kahoot! fashion, with distinctive shapes and colors, hover animations, and 3D transforms.
+*   **Bold Typography:** Large, black fonts with eye-catching gradients and exciting messages like "KAHOOT!", "CORRECT!", and "WINNER!" are displayed.
+*   **Enhanced Animations:** Bounce-in effects, celebration animations, and smooth transitions have been implemented throughout the game for a dynamic and engaging experience.
 
-**Use your preferred IDE**
+## 🔧 Technical Features:
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+*   **State Management:** A custom hook is used for efficient and organized state management.
+*   **User Feedback:** Toast notifications provide immediate feedback to the player.
+*   **Progressive Enhancement:** The game is built with progressive enhancement in mind, ensuring a great experience on both mobile and tablet devices.
+*   **Persistent Scores:** Local storage is utilized to keep track of scores across game sessions.
+*   **Accessibility:** Accessible button states and feedback are implemented to ensure the game is playable for everyone.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🚀 Getting Started
 
-Follow these steps:
+### Installation
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+1.  Clone the repository:
+2.  Install the dependencies:
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Available Scripts
 
-# Step 3: Install the necessary dependencies.
-npm i
+In the project directory, you can run:
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+*   `npm start`: Runs the app in development mode.
+*   `npm test`: Launches the test runner in interactive watch mode.
+*   `npm run build`: Builds the app for production to the `build` folder.
+*   `npm run eject`: Removes the single dependency and copies all configuration files and transitive dependencies into your project.
 
-**Edit a file directly in GitHub**
+## How to Play
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/04b52339-21e0-418d-8137-883f018d3a9d) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+1.  Start the game to see the animated intro screen with the current high score.
+2.  Answer three quiz questions, each with a 30-second time limit.
+3.  After the quiz, spin the fortune wheel to win a prize.
+4.  View your results on the final screen, which displays your score, a star rating, and a celebration animation.
